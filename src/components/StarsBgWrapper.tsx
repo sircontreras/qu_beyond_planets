@@ -7,7 +7,8 @@ const StarsBgWrapper: React.FC<PropsWithChildren> = ({children})=>{
     return (
         <Box sx={{
             width:'100%',
-            height: '100vh',
+            height: '100%',
+            minHeight : '100vh',
             background: `linear-gradient(175deg, rgba(0,0,0,1) 0%, rgba(2,2,44,1) 100%)`,
             padding: '25px',
             '&:before' : {

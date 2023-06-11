@@ -80,7 +80,7 @@ const PlanetItem: React.FC<Props> = ({planetData})=>{
                 },
                 cursor: 'pointer',
             }}>
-                <img alt='planet' src={planetImages[planetData.name]} style={{
+                <img alt='planet' src={planetImg} style={{
                     width:'89px',
                     objectFit: 'contain'
                 }}/>
