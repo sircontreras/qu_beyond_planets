@@ -39,5 +39,25 @@
 
 
 *{
-   box-sizing : border-box
+   box-sizing : border-box;
+
+}
+
+@font-face {
+  font-family: "jost-regular";   /*Can be any text*/
+  src: local("jost-regular"),
+  url("./assets/fonts/jost/jost-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "jost-medium";   /*Can be any text*/
+  src: local("jost-medium"),
+  url("./assets/fonts/jost/jost-medium.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: "jost-semibold";   /*Can be any text*/
+  src: local("jost-semibold"),
+  url("./assets/fonts/jost/jost-semibold.ttf") format("truetype");
 }

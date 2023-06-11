@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from "react";
 import {Box} from "@mui/material";
-import bgStars from "../images/bgStars.png";
+import bgStars from "../assets/images/bgStars.png";
 
 const StarsBgWrapper: React.FC<PropsWithChildren> = ({children})=>{
 
