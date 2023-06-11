@@ -6,6 +6,7 @@ import {Planet, ResponseType} from "../types";
 import PlanetsList from "../components/Planets/PlanetsList";
 import planetsList from "../components/Planets/PlanetsList";
 
+
 const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
 
     const [climateCriteria, setClimateCriteria] = useState('');
@@ -19,13 +20,32 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
 
     useEffect(() => {
 
-        setIsloading(true);
-        fetch('https://swapi.dev/api/planets/').then((response) => response.json().then((data: ResponseType) => {
-            setFetchedPlanets(data.results);
-            setIsloading(false);
-        }));
 
-    }, []);
+            const loadPlanets = async (): Promise<void> =>{
+                let planetsFound: Planet[] = [];
+
+               await
+                    fetch('https://swapi.dev/api/planets/?page=1').then((response) => response.json().then((data: ResponseType) => {
+                    planetsFound.push(...data.results);
+                }));
+
+               await
+                    fetch('https://swapi.dev/api/planets/?page=2').then((response) => response.json().then((data: ResponseType) => {
+                        planetsFound.push(...data.results);
+                    }));
+
+                setFetchedPlanets(planetsFound);
+                setIsloading(false);
+
+            }
+
+            if(!isLoading && fetchedPlanets.length === 0) {
+                loadPlanets();
+                setIsloading(true);
+            }
+
+
+    }, [isLoading, fetchedPlanets.length]);
 
 
     return (
@@ -75,7 +95,7 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
                     width: '100%',
                     margin: '48px auto 0'
                 }}>
-                    <Grid container spacing={3} sx={{
+                    <Grid container spacing='16px' sx={{
                         justifyContent: 'center',
                     }}>
                         <Grid item xs={12} md={3} minWidth='236px'>
