@@ -65,30 +65,33 @@ const SelectField: React.FC<Props> = ({defaultText, iconName, value, options, on
     },[options]);
 
     return (
-        <TextField value={value.length ? value : defaultText} select sx={{
-            width:'100%',
-            backgroundColor: COLORS.BLACK_PURPLE_1,
-            borderRadius: '10px',
-            paddingRight: '16px',
-            '.MuiInputBase-root': {
-                fontFamily: 'jost-medium',
-                color: 'white',
-                fontSize: '18px',
-                outlined : 'none'
+        <TextField
+            value={value.length ? value : defaultText}
+            select
+            sx={{
+                width:'100%',
+                backgroundColor: COLORS.BLACK_PURPLE_1,
+                backgroundImage : `url(${leadingIconName}), url(${icon_arrowDown})`,
+                backgroundRepeat : 'no-repeat',
+                backgroundPosition : 'left 16px center, right 16px center',
 
-            },
-        }}
-                   InputProps={{
-                       startAdornment: (
-                           <InputAdornment position="start">
-                               <img alt='mark' src={leadingIconName} width='26px' height='21px'/>
-                           </InputAdornment>
-                       ),
-                   }}
-                   SelectProps={{
-                       IconComponent  : ()=><img alt='mark' src={icon_arrowDown} width='23px'/>,
-                   }}
-                   placeholder='Sort by climate'
+                borderRadius: '10px',
+                '.MuiInputBase-root': {
+                    fontFamily: 'jost-medium',
+                    color: 'white',
+                    fontSize: '18px',
+                },
+                '.MuiSelect-select' : {
+                    paddingLeft: '50px',
+                },
+                svg : {
+                    display:'none'
+                },
+                'fieldset' : {
+                    border : 'none'
+                }
+            }}
+           placeholder='Sort by climate'
         >
             {processedOptions}
 
