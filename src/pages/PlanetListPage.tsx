@@ -5,6 +5,7 @@ import SelectField from "../components/SelectField";
 import {Planet, ResponseType} from "../types";
 import PlanetsList from "../components/Planets/PlanetsList";
 import planetsList from "../components/Planets/PlanetsList";
+import icon_sort from "../assets/icons/icon_sort.svg";
 
 
 const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
@@ -98,75 +99,23 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
                     <Grid container spacing='16px' sx={{
                         justifyContent: 'center',
                     }}>
-                        <Grid item xs={12} md={3} minWidth='236px'>
+                        <Grid item xs={12} md={12} minWidth='236px'>
                             <Box>
                                 <SelectField
-                                    defaultText='By climate'
+                                    defaultText='Sort the planets alphabetically'
                                     value={climateCriteria}
                                     options={[{
-                                        label: 'Templado',
-                                        value: 'templado'
+                                        label: 'Acs',
+                                        value: 'Ascending'
                                     }, {
-                                        label: 'Lluvioso',
-                                        value: 'lluvioso'
+                                        label: 'Desc',
+                                        value: 'Descending'
                                     }]}
                                     onChange={climateHandler}
-                                    iconName='cloud'
+                                    iconPath={icon_sort}
                                 />
                             </Box>
                         </Grid>
-                        <Grid item xs={12} md={3} minWidth='236px'>
-                            <Box>
-                                <SelectField
-                                    defaultText='By terrain'
-                                    value={climateCriteria}
-                                    options={[{
-                                        label: 'Templado',
-                                        value: 'templado'
-                                    }, {
-                                        label: 'Lluvioso',
-                                        value: 'lluvioso'
-                                    }]}
-                                    onChange={climateHandler}
-                                    iconName='rock'
-                                />
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={3} minWidth='236px'>
-                            <Box>
-                                <SelectField
-                                    defaultText='By rotation'
-                                    value={climateCriteria}
-                                    options={[{
-                                        label: 'Templado',
-                                        value: 'templado'
-                                    }, {
-                                        label: 'Lluvioso',
-                                        value: 'lluvioso'
-                                    }]}
-                                    onChange={climateHandler}
-                                    iconName='planet'
-                                />
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={3} minWidth='236px'>
-                            <Box>
-                                <SelectField
-                                    defaultText='By orbit'
-                                    value={climateCriteria}
-                                    options={[{
-                                        label: 'Templado',
-                                        value: 'templado'
-                                    }, {
-                                        label: 'Lluvioso',
-                                        value: 'lluvioso'
-                                    }]}
-                                    onChange={climateHandler}
-                                    iconName='planetWithHoles'
-                                />
-                            </Box>
-                        </Grid>
-
                     </Grid>
                 </Box>
 

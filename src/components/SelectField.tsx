@@ -4,6 +4,8 @@ import icon_climate from "../assets/icons/icon_cloudClimate.svg";
 import icon_rock from "../assets/icons/icon_rock.svg";
 import icon_planet from "../assets/icons/icon_planetRoundedByRing.svg";
 import icon_planetWithHoles from "../assets/icons/icon_planetWithHoles.svg";
+import icon_sort from "../assets/icons/icon_sort.svg";
+
 
 
 import icon_arrowDown from "../assets/icons/icon_whiteArrowDown.svg";
@@ -11,40 +13,13 @@ import React, {useMemo} from "react";
 
 interface Props{
     defaultText : string,
-    iconName : 'cloud' | 'rock' | 'planet' | 'planetWithHoles',
+    iconPath : string,
     value : string,
     options : {label : string, value : string}[],
     onChange : (newValue : string)=>void
 }
 
-const SelectField: React.FC<Props> = ({defaultText, iconName, value, options, onChange})=>{
-
-    const leadingIconName = useMemo(()=>{
-
-        switch (iconName){
-
-            case 'cloud':
-                return icon_climate;
-                break;
-
-            case 'rock':
-                return icon_rock;
-                break;
-
-            case 'planet':
-                return icon_planet;
-                break;
-
-            case 'planetWithHoles':
-                return icon_planetWithHoles;
-                break;
-
-            default:
-                return icon_climate;
-                break;
-
-        }
-    },[iconName]);
+const SelectField: React.FC<Props> = ({defaultText, iconPath, value, options, onChange})=>{
 
     const processedOptions = useMemo(()=>{
 
@@ -71,7 +46,8 @@ const SelectField: React.FC<Props> = ({defaultText, iconName, value, options, on
             sx={{
                 width:'100%',
                 backgroundColor: COLORS.BLACK_PURPLE_1,
-                backgroundImage : `url(${leadingIconName}), url(${icon_arrowDown})`,
+                backgroundImage : `url(${iconPath}), url(${icon_arrowDown})`,
+                backgroundSize : '25px 25px, 20px 25px',
                 backgroundRepeat : 'no-repeat',
                 backgroundPosition : 'left 16px center, right 16px center',
 
