@@ -1,4 +1,4 @@
-import React, {PropsWithChildren, useEffect, useState} from "react";
+import React, {PropsWithChildren, useEffect, useMemo, useState} from "react";
 import StarsBgWrapper from "../components/StarsBgWrapper";
 import {Box, CircularProgress, Grid, Typography} from "@mui/material";
 import SelectField from "../components/SelectField";
@@ -7,20 +7,24 @@ import PlanetsList from "../components/Planets/PlanetsList";
 import planetsList from "../components/Planets/PlanetsList";
 import icon_sort from "../assets/icons/icon_sort.svg";
 
+type SortTypes = 'asc' | 'desc';
+
 
 const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
-
-    const [climateCriteria, setClimateCriteria] = useState('');
 
     const [fetchedPlanets, setFetchedPlanets] = useState<Planet[]>([]);
     const [isLoading, setIsloading] = useState(false);
 
-    const climateHandler = (newValue: string) => {
-        setClimateCriteria(newValue);
+    const [sortCriteria, setSortCriteria] = useState<SortTypes | null>();
+
+
+
+    const sortingHandler = (event: React.SyntheticEvent) => {
+        setSortCriteria((event.target as HTMLInputElement).value as SortTypes);
+        console.log((event.target as HTMLInputElement).value);
     }
 
     useEffect(() => {
-
 
             const loadPlanets = async (): Promise<void> =>{
                 let planetsFound: Planet[] = [];
@@ -47,6 +51,23 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
 
 
     }, [isLoading, fetchedPlanets.length]);
+
+    const sortedPlanets = useMemo(()=>{
+
+        let sortedOnes= [...fetchedPlanets];
+        if(sortCriteria === 'asc'){
+            sortedOnes = sortedOnes.sort((a, b)=>{
+                return a.name.localeCompare(b.name);
+            });
+        }else if(sortCriteria === 'desc'){
+            sortedOnes = sortedOnes.sort((a, b)=>{
+                return b.name.localeCompare(a.name);
+            });
+        }
+
+        return sortedOnes;
+
+    },[fetchedPlanets, sortCriteria] );
 
 
     return (
@@ -90,7 +111,7 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
                 }}>Loading the planets...
                 </Typography>
             </Box>}
-            {(!isLoading && planetsList.length) && <>
+            {(!isLoading && fetchedPlanets.length) && <>
                 <Box sx={{
                     maxWidth: '992px',
                     width: '100%',
@@ -103,15 +124,15 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
                             <Box>
                                 <SelectField
                                     defaultText='Sort the planets alphabetically'
-                                    value={climateCriteria}
+                                    value={sortCriteria ?? ''}
                                     options={[{
-                                        label: 'Acs',
-                                        value: 'Ascending'
+                                        label: 'In ascending order',
+                                        value: 'asc'
                                     }, {
-                                        label: 'Desc',
-                                        value: 'Descending'
+                                        label: 'In descending order',
+                                        value: 'desc'
                                     }]}
-                                    onChange={climateHandler}
+                                    onChange={sortingHandler}
                                     iconPath={icon_sort}
                                 />
                             </Box>
@@ -119,7 +140,7 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
                     </Grid>
                 </Box>
 
-                <PlanetsList planetItems={fetchedPlanets}/>
+                <PlanetsList planetItems={sortedPlanets}/>
             </>}
 
 

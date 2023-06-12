@@ -16,7 +16,7 @@ interface Props{
     iconPath : string,
     value : string,
     options : {label : string, value : string}[],
-    onChange : (newValue : string)=>void
+    onChange : (event: React.SyntheticEvent)=>void
 }
 
 const SelectField: React.FC<Props> = ({defaultText, iconPath, value, options, onChange})=>{
@@ -68,6 +68,7 @@ const SelectField: React.FC<Props> = ({defaultText, iconPath, value, options, on
                 }
             }}
            placeholder='Sort by climate'
+            onChange={onChange}
         >
             {processedOptions}
 
