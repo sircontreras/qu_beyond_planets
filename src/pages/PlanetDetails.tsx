@@ -1,7 +1,7 @@
 import GradientBgWrapper from "../components/GradientBgWrapper";
 import {Link, useParams} from "react-router-dom";
 import {Box, CircularProgress, Stack, Typography, useMediaQuery} from "@mui/material";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import usePlanetImages from "../hooks/usePlanetImages";
 import {Planet, PlanetImageType} from "../types";
 import PlanetDetail from "../components/Planets/PlanetDetail";
@@ -14,7 +14,6 @@ import icon_planetWithHoles from '../assets/icons/icon_planetWithHoles.svg';
 import icon_appleFalling from '../assets/icons/icon_appleFalling.svg';
 import icon_people from '../assets/icons/icon_people.svg';
 
-
 import COLORS from "../contants/Colors";
 
 const PlanetDetails = ()=>{
@@ -26,18 +25,19 @@ const PlanetDetails = ()=>{
 
 
     const isDesktop = useMediaQuery('(min-width:1020px)');
+    const blockSearch = useRef(false);
 
     useEffect(()=>{
-        if(!currentPlanet){
+
+        if(!currentPlanet && !isLoading && !blockSearch.current){
+            blockSearch.current = true;
             setIsLoading(true);
-            fetch(`http://swapi.dev/api/planets/${urlParams.id}`).then((response) => response.json()).then((data)=>{
+            fetch(`https://swapi.dev/api/planets/${urlParams.id}`).then((response) => response.json()).then((data)=>{
                 setCurrentPlanet(data);
                 setIsLoading(false);
             });
         }
-
-
-    },[urlParams.id]);
+    },[urlParams.id, currentPlanet, isLoading]);
 
     const getPlanetImg = useCallback((planetName: string)=>{
 

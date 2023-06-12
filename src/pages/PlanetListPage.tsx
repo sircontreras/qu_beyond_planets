@@ -1,4 +1,4 @@
-import React, {PropsWithChildren, useEffect, useMemo, useState} from "react";
+import React, {PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import GradientBgWrapper from "../components/GradientBgWrapper";
 import {Box, CircularProgress, Grid, Typography} from "@mui/material";
 import SelectField from "../components/SelectField";
@@ -8,46 +8,49 @@ import icon_sort from "../assets/icons/icon_sort.svg";
 
 type SortTypes = 'asc' | 'desc';
 
+
 const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
 
     const [fetchedPlanets, setFetchedPlanets] = useState<Planet[]>([]);
 
     const [isLoading, setIsloading] = useState(false);
 
+    const blockSearch = useRef(false);
+
+
     const [sortCriteria, setSortCriteria] = useState<SortTypes | null>();
     
     const sortingHandler = (event: React.SyntheticEvent) => {
         setSortCriteria((event.target as HTMLInputElement).value as SortTypes);
-        console.log((event.target as HTMLInputElement).value);
     }
+    const loadPlanets =  useCallback(async (): Promise<void> =>{
+        let planetsFound: Planet[] = [];
+
+        await fetch('https://swapi.dev/api/planets/?page=1').then((response) => response.json().then((data: ResponseType) => {
+                planetsFound.push(...data.results);
+            }));
+
+        await
+             fetch('https://swapi.dev/api/planets/?page=2').then((response) => response.json().then((data: ResponseType) => {
+                 planetsFound.push(...data.results);
+             }));
+
+        setFetchedPlanets(planetsFound);
+        setIsloading(false);
+
+    },[]);
+
 
     useEffect(() => {
 
-            const loadPlanets = async (): Promise<void> =>{
-                let planetsFound: Planet[] = [];
 
-               await
-                    fetch('https://swapi.dev/api/planets/?page=1').then((response) => response.json().then((data: ResponseType) => {
-                    planetsFound.push(...data.results);
-                }));
-
-               await
-                    fetch('https://swapi.dev/api/planets/?page=2').then((response) => response.json().then((data: ResponseType) => {
-                        planetsFound.push(...data.results);
-                    }));
-
-                setFetchedPlanets(planetsFound);
-                setIsloading(false);
-
-            }
-
-            if(!isLoading && fetchedPlanets.length === 0) {
-                loadPlanets();
+            if(!isLoading && fetchedPlanets.length === 0 && !blockSearch.current) {
+                blockSearch.current = true;
                 setIsloading(true);
+                loadPlanets();
             }
 
-
-    }, [isLoading, fetchedPlanets.length]);
+    }, [isLoading, loadPlanets, fetchedPlanets.length]);
 
     const sortedPlanets = useMemo(()=>{
 
