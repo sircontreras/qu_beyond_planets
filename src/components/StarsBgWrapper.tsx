@@ -2,7 +2,12 @@ import React, {PropsWithChildren} from "react";
 import {Box} from "@mui/material";
 import bgStars from "../assets/images/bgStars.png";
 
-const StarsBgWrapper: React.FC<PropsWithChildren> = ({children})=>{
+interface Props {
+    verticallyCenter? :boolean
+}
+
+const StarsBgWrapper: React.FC<PropsWithChildren<Props>> = ({children, verticallyCenter= false})=>{
+
 
     return (
         <Box sx={{
@@ -11,6 +16,8 @@ const StarsBgWrapper: React.FC<PropsWithChildren> = ({children})=>{
             minHeight : '100vh',
             background: `linear-gradient(175deg, rgba(0,0,0,1) 0%, rgba(2,2,44,1) 100%)`,
             padding: '25px',
+            display: verticallyCenter ? 'flex' : '',
+            alignItems: verticallyCenter ? 'center' : '',
             '&:before' : {
                 content: '""',
                 background: `url(${bgStars})`,
