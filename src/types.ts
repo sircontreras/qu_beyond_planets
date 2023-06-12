@@ -21,3 +21,25 @@ export interface ResponseType {
     previous: string | null,
     results : Planet[]
 }
+
+export type PlanetImageType =  {
+    'Tatooine' : string,
+    'Alderaan' : string,
+    'Yavin IV' : string,
+    'Hoth' : string,
+    'Dagobah' : string,
+    'Bespin' : string,
+    'Endor' : string,
+    'Naboo' : string,
+    'Coruscant' : string,
+    'Kamino' : string,
+    'Geonosis' : string,
+    'Utapau' : string,
+    'Mustafar' : string,
+    'Kashyyyk' : string,
+    'Polis Massa' : string,
+    'Mygeeto' : string,
+    'Felucia' : string,
+    'Cato Neimoidia' : string,
+    'Saleucami' : string
+}
