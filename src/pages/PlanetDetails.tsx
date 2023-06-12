@@ -13,7 +13,6 @@ import icon_planet from '../assets/icons/icon_planetRoundedByRing.svg';
 import icon_planetWithHoles from '../assets/icons/icon_planetWithHoles.svg';
 import icon_appleFalling from '../assets/icons/icon_appleFalling.svg';
 import icon_people from '../assets/icons/icon_people.svg';
-
 import COLORS from "../contants/Colors";
 
 const PlanetDetails = ()=>{

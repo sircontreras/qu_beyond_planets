@@ -32,7 +32,7 @@ const SelectField: React.FC<Props> = ({defaultText, iconPath, value, options, on
 
         return opts;
 
-    },[options]);
+    },[options, defaultText]);
 
     return (
         <TextField
