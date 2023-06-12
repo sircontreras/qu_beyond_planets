@@ -4,21 +4,20 @@ import {Box, CircularProgress, Grid, Typography} from "@mui/material";
 import SelectField from "../components/SelectField";
 import {Planet, ResponseType} from "../types";
 import PlanetsList from "../components/Planets/PlanetsList";
-import planetsList from "../components/Planets/PlanetsList";
 import icon_sort from "../assets/icons/icon_sort.svg";
+import {usePlanetContext} from "../components/PlanetContext";
 
 type SortTypes = 'asc' | 'desc';
 
 
 const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
 
-    const [fetchedPlanets, setFetchedPlanets] = useState<Planet[]>([]);
+    const { fetchedPlanets, setFetchedPlanets} = usePlanetContext();
+
     const [isLoading, setIsloading] = useState(false);
 
     const [sortCriteria, setSortCriteria] = useState<SortTypes | null>();
-
-
-
+    
     const sortingHandler = (event: React.SyntheticEvent) => {
         setSortCriteria((event.target as HTMLInputElement).value as SortTypes);
         console.log((event.target as HTMLInputElement).value);
@@ -29,6 +28,7 @@ const PlanetListPage: React.FC<PropsWithChildren> = ({children}) => {
             const loadPlanets = async (): Promise<void> =>{
                 let planetsFound: Planet[] = [];
 
+                //todo: verify why this two endpoints call are being done twice
                await
                     fetch('https://swapi.dev/api/planets/?page=1').then((response) => response.json().then((data: ResponseType) => {
                     planetsFound.push(...data.results);

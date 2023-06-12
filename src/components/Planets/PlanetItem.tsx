@@ -24,6 +24,7 @@ import planet19 from '../../assets/images/planets/planet19.svg';
 import React, {useMemo} from "react";
 import {Planet} from "../../types";
 import COLORS from "../../contants/Colors";
+import {useNavigate} from "react-router-dom";
 
 const planetImages: Record<string, string> = {
     Tatooine : planet1,
@@ -54,6 +55,8 @@ interface Props {
 
 const PlanetItem: React.FC<Props> = ({planetData})=>{
 
+    const navigator = useNavigate();
+
     const planetImg = useMemo(()=>{
 
         const fromListPlanet = planetImages[planetData.name];
@@ -79,6 +82,8 @@ const PlanetItem: React.FC<Props> = ({planetData})=>{
                     backgroundColor :  'rgb(62,62,124)',
                 },
                 cursor: 'pointer',
+            }} onClick={()=>{
+                navigator(`/planets/${planetData.name}`)
             }}>
                 <img alt='planet' src={planetImg} style={{
                     width:'89px',
