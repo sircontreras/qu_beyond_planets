@@ -9,6 +9,13 @@ import icon_diameter from '../assets/icons/icon_diameter.svg';
 import icon_surfaceWater from '../assets/icons/icon_waterSurface.svg';
 import icon_rock from '../assets/icons/icon_rock.svg';
 import icon_cloud from '../assets/icons/icon_cloudClimate.svg';
+import icon_planet from '../assets/icons/icon_planetRoundedByRing.svg';
+import icon_planetWithHoles from '../assets/icons/icon_planetWithHoles.svg';
+import icon_appleFalling from '../assets/icons/icon_appleFalling.svg';
+import icon_people from '../assets/icons/icon_people.svg';
+
+
+import COLORS from "../contants/Colors";
 
 const PlanetDetails = ()=>{
 
@@ -129,10 +136,10 @@ const PlanetDetails = ()=>{
                           </Stack>
 
                           <Stack spacing='63px'>
-                              <PlanetDetail title='Rotation period' description='23' iconPath={icon_diameter} cardColor='red'/>
-                              <PlanetDetail title='Population' description='20,000' iconPath={icon_surfaceWater} cardColor='blue'/>
-                              <PlanetDetail title='Orbital period' description='23' iconPath={icon_rock} cardColor='purple'/>
-                              <PlanetDetail title='Gravity' description='1 Standart' iconPath={icon_cloud} cardColor='green'/>
+                              <PlanetDetail title='Rotation period' description='23' iconPath={icon_planet} cardColor='green'/>
+                              <PlanetDetail title='Population' description='20,000' iconPath={icon_people} cardColor='purple'/>
+                              <PlanetDetail title='Orbital period' description='23' iconPath={icon_planetWithHoles} cardColor='blue'/>
+                              <PlanetDetail title='Gravity' description='1 Standart' iconPath={icon_appleFalling} cardColor='red'/>
                           </Stack>
                       </Stack>
 
@@ -144,16 +151,18 @@ const PlanetDetails = ()=>{
                       height: '1px',
                       backgroundColor: 'white',
                   }}/>
-                  <Button variant='contained' sx={{
+                  <Link to='/planets' style={{
+                      textDecoration:'none',
+                      backgroundColor :COLORS.BLUE_MEDIUM_1,
+                      color:'white',
+                      padding:'20px 20px',
+                      width: '180px',
+                      textAlign:'center',
+                      borderRadius:'10px',
                       margin: '0 auto',
-                      fontFamily : 'jost-regular',
-                      color: 'white',
-                      fontSize: '20px',
-                  }}>
-                   <Link to='/planets' style={{
-                       textDecoration:'none',
-                   }}>See all planets</Link>
-                  </Button>
+                      fontSize : '18px',
+                      fontFamily:'jost-medium'
+                  }}>See all planets</Link>
               </Stack>
           )}
 
