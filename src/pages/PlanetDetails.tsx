@@ -49,9 +49,7 @@ const PlanetDetails = ()=>{
                       alignItems:'center',
                       justifyContent: 'center'
                   }}>
-                      <Box sx={{
-                          position: 'relative'
-                      }}>
+                      <Box>
                           <img alt={currentPlanet.name} src={planetImages[currentPlanet.name as keyof PlanetImageType]} style={{
                               width:'240px',
                               objectFit:'contain',
