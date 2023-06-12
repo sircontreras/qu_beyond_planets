@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
-
+`
 
 *{
    box-sizing : border-box;
@@ -60,4 +60,8 @@
   font-family: "jost-semibold";   /*Can be any text*/
   src: local("jost-semibold"),
   url("./assets/fonts/jost/jost-semibold.ttf") format("truetype");
+}
+
+a:visited, a:link, a:hover, a:active{
+  color: inherit
 }

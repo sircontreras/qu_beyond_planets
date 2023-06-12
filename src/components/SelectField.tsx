@@ -1,10 +1,5 @@
 import COLORS from "../contants/Colors";
-import {InputAdornment, MenuItem, TextField} from "@mui/material";
-import icon_climate from "../assets/icons/icon_cloudClimate.svg";
-import icon_rock from "../assets/icons/icon_rock.svg";
-import icon_planet from "../assets/icons/icon_planetRoundedByRing.svg";
-import icon_planetWithHoles from "../assets/icons/icon_planetWithHoles.svg";
-import icon_sort from "../assets/icons/icon_sort.svg";
+import {MenuItem, TextField} from "@mui/material";
 
 
 

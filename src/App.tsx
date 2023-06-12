@@ -1,9 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import PlanetListPage from "./pages/PlanetListPage";
-import PlanetContext from "./components/PlanetContext";
 import PlanetDetails from "./pages/PlanetDetails";
 
 const router = createBrowserRouter([
@@ -16,16 +14,14 @@ const router = createBrowserRouter([
     element : <PlanetListPage/>
   },
   {
-    path : '/planets/:name',
+    path : '/planets/:id',
     element : <PlanetDetails/>
   }
 ]);
 
 function App() {
   return (
-     <PlanetContext>
        <RouterProvider router={router}/>
-     </PlanetContext>
   );
 }
 

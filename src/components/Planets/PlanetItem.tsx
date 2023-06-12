@@ -1,7 +1,4 @@
 import {Grid, Stack, Typography} from "@mui/material";
-
-
-
 import React, {useMemo} from "react";
 import {Planet, PlanetImageType} from "../../types";
 import COLORS from "../../contants/Colors";
@@ -26,6 +23,10 @@ const PlanetItem: React.FC<Props> = ({planetData})=>{
 
     },[planetData.name, planetImages] );
 
+    const getPlanetId = (planetUrl : string)=>{
+       return planetUrl[planetUrl.length -2];
+    }
+
     return (
         <Grid item xs={12} md={2}>
             <Stack sx={{
@@ -44,7 +45,7 @@ const PlanetItem: React.FC<Props> = ({planetData})=>{
                 },
                 cursor: 'pointer',
             }} onClick={()=>{
-                navigator(`/planets/${planetData.name}`)
+                navigator(`/planets/${getPlanetId(planetData.url)}`)
             }}>
                 <img alt='planet' src={planetImg} style={{
                     width:'89px',
