@@ -24,7 +24,10 @@ const PlanetItem: React.FC<Props> = ({planetData})=>{
     },[planetData.name, planetImages] );
 
     const getPlanetId = (planetUrl : string)=>{
-       return planetUrl[planetUrl.length -2];
+        const splitted = planetUrl.split('/').filter((piece)=>{
+            return piece.length > 0
+        });
+       return splitted[splitted.length -1];
     }
 
     return (
