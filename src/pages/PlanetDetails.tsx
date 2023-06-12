@@ -1,7 +1,7 @@
 import GradientBgWrapper from "../components/GradientBgWrapper";
 import {Link, useParams} from "react-router-dom";
-import {Box, Button, CircularProgress, Grid, Stack, Typography, useMediaQuery} from "@mui/material";
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {Box, CircularProgress, Stack, Typography, useMediaQuery} from "@mui/material";
+import {useCallback, useEffect, useState} from "react";
 import usePlanetImages from "../hooks/usePlanetImages";
 import {Planet, PlanetImageType} from "../types";
 import PlanetDetail from "../components/Planets/PlanetDetail";
