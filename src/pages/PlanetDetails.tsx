@@ -5,6 +5,13 @@ import {usePlanetContext} from "../components/PlanetContext";
 import {useMemo} from "react";
 import usePlanetImages from "../hooks/usePlanetImages";
 import {PlanetImageType} from "../types";
+import PlanetDetail from "../components/Planets/PlanetDetail";
+import icon_diameter from '../assets/icons/icon_diameter.svg';
+import icon_surfaceWater from '../assets/icons/icon_waterSurface.svg';
+import icon_rock from '../assets/icons/icon_rock.svg';
+import icon_cloud from '../assets/icons/icon_cloudClimate.svg';
+
+
 
 
 const PlanetDetails = ()=>{
@@ -29,17 +36,20 @@ const PlanetDetails = ()=>{
       <StarsBgWrapper>
           {currentPlanet && (
               <Grid container>
-                  <Grid xs={12} md={6}>
+                  <Grid item xs={12} md={3} sx={{
+                      minWidth : '314px'
+                  }}>
                       <Stack sx={{
                           display: 'inline-flex',
-
                       }}>
-
-                          <Box>
+                          <Box sx={{
+                              position: 'relative'
+                          }}>
                               <img alt={currentPlanet.name} src={planetImages[currentPlanet.name as keyof PlanetImageType]} style={{
                                   width:'275px',
-                                  objectFit:'contain'
+                                  objectFit:'contain',
                               }}/>
+
                           </Box>
                           <Stack sx={{
                               alignItems:'center',
@@ -71,6 +81,28 @@ const PlanetDetails = ()=>{
                           </Stack>
                       </Stack>
                   </Grid>
+
+                <Grid container item xs={12} md={9} >
+                  <Grid item xs={12} md={6} sx={{
+                      justifyContent:'end'
+                  }}>
+                         <Stack spacing='63px'>
+                             <PlanetDetail title='Diameter' description='10,465 km' iconPath={icon_diameter} cardColor='red'/>
+                             <PlanetDetail title='Surface water' description='1' iconPath={icon_surfaceWater} cardColor='blue'/>
+                             <PlanetDetail title='Terrain' description='Dessert' iconPath={icon_rock} cardColor='purple'/>
+                             <PlanetDetail title='Climate' description='Arid' iconPath={icon_cloud} cardColor='green'/>
+                         </Stack>
+                  </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <Stack spacing='63px'>
+                            <PlanetDetail title='Rotation period' description='23' iconPath={icon_diameter} cardColor='red'/>
+                            <PlanetDetail title='Population' description='20,000' iconPath={icon_surfaceWater} cardColor='blue'/>
+                            <PlanetDetail title='Orbital period' description='23' iconPath={icon_rock} cardColor='purple'/>
+                            <PlanetDetail title='Gravity' description='1 Standart' iconPath={icon_cloud} cardColor='green'/>
+                        </Stack>
+                    </Grid>
+                </Grid>
               </Grid>
           )}
 
