@@ -73,7 +73,8 @@ const PlanetDetail: React.FC<Props> = ({title, description, iconPath, cardColor 
                     fontFamily : 'jost-regular',
                     fontSize:'41px',
                     color:'white',
-                    lineHeight: '40px'
+                    lineHeight: '40px',
+                    wordBreak: 'break-word'
                 }}>{description}</Typography>
             </Box>
         </Stack>

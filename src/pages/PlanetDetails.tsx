@@ -89,7 +89,7 @@ const PlanetDetails = ()=>{
                           </Box>
                           <Box sx={{
                               display:'inline-flex',
-                              mt:'44px'
+                              mt:'44px',
                           }}>
                               <Stack sx={{
                                   alignItems:'center',
@@ -122,7 +122,7 @@ const PlanetDetails = ()=>{
                           </Box>
                       </Stack>
                       <Stack direction={{xs: 'column', sm:'row'}} spacing='40px' sx={{
-                          flex : '70% 1 1',
+                          flex : '40% 1 1',
                           justifyContent:'center',
                           mt : isDesktop ? '0' : '25px'
                       }}
