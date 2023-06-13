@@ -39,6 +39,7 @@ const PlanetDetail: React.FC<Props> = ({title, description, iconPath, cardColor 
     return (
         <Stack direction='row'>
             <Box sx={{
+                flexShrink : 0,
                 backgroundColor : iconCardColor,
                 width: '63px',
                 height:  '81px',
