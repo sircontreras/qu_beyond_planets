@@ -128,17 +128,17 @@ const PlanetDetails = ()=>{
                       }}
                       >
                           <Stack spacing='63px'>
-                              <PlanetDetail title='Diameter' description='10,465 km' iconPath={icon_diameter} cardColor='red'/>
-                              <PlanetDetail title='Surface water' description='1' iconPath={icon_surfaceWater} cardColor='blue'/>
-                              <PlanetDetail title='Terrain' description='Dessert' iconPath={icon_rock} cardColor='purple'/>
-                              <PlanetDetail title='Climate' description='Arid' iconPath={icon_cloud} cardColor='green'/>
+                              <PlanetDetail title='Diameter' description={currentPlanet.diameter} iconPath={icon_diameter} cardColor='red'/>
+                              <PlanetDetail title='Surface water' description={currentPlanet.surface_water} iconPath={icon_surfaceWater} cardColor='blue'/>
+                              <PlanetDetail title='Terrain' description={currentPlanet.terrain} iconPath={icon_rock} cardColor='purple'/>
+                              <PlanetDetail title='Climate' description={currentPlanet.climate} iconPath={icon_cloud} cardColor='green'/>
                           </Stack>
 
                           <Stack spacing='63px'>
-                              <PlanetDetail title='Rotation period' description='23' iconPath={icon_planet} cardColor='green'/>
-                              <PlanetDetail title='Population' description='20,000' iconPath={icon_people} cardColor='purple'/>
-                              <PlanetDetail title='Orbital period' description='23' iconPath={icon_planetWithHoles} cardColor='blue'/>
-                              <PlanetDetail title='Gravity' description='1 Standart' iconPath={icon_appleFalling} cardColor='red'/>
+                              <PlanetDetail title='Rotation period' description={currentPlanet.rotation_period} iconPath={icon_planet} cardColor='green'/>
+                              <PlanetDetail title='Population' description={currentPlanet.population} iconPath={icon_people} cardColor='purple'/>
+                              <PlanetDetail title='Orbital period' description={currentPlanet.orbital_period} iconPath={icon_planetWithHoles} cardColor='blue'/>
+                              <PlanetDetail title='Gravity' description={currentPlanet.gravity} iconPath={icon_appleFalling} cardColor='red'/>
                           </Stack>
                       </Stack>
 
