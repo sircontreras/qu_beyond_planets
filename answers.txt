@@ -1,0 +1,14 @@
+What's a closure?
+Everywhere we have curly braces {} could be considered a closure. In which we can have a private scope that prevents the exterior context from accessing it but only from inside of it. A closure is also capable of accessing its parent data.
+
+Where in the code is there a closure?
+I wouldn't point you to a specific file because I have closures in all of them I would say. My functional components are one, useEffects, useCallbacks, etc.
+
+Which are the potential side-effects in any function?
+To affect other sectors of the app as a result of calling that function(changing data that is shared for example). One specific case of side-effects are the useEffects hooks in React.
+
+Could you point out any of these cases in your code?
+Yes, in the file PlanetListPage.tsx in the line 44, I have a useEffects that watch for certain properties to have specific values to then authorized the load of planets, and then I call the necessary endpoints. I have similar behaviours installed in the PlanetDetails.tsx as well.
+
+Are they expected? Can they be avoided?
+Yes, they are expected. I wouldn't say be "avoid" for my case, because they are on purpose, but yes, there's always other alternative to get the same results.
